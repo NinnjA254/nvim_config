@@ -10,7 +10,8 @@ return require("packer").startup(function(use)
 	  requires = { {"nvim-lua/plenary.nvim"} }
   }
   --colorscheme
-  Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Retro Scheme
+  -- Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Retro Scheme
+  use("https://github.com/rafi/awesome-vim-colorschemes")
   use({
 	  "rose-pine/neovim",
 	  as = "rose-pine",
