@@ -67,8 +67,12 @@ return require("packer").startup(function(use)
     tag = "nightly" -- optional, updated every week. (see issue #1193)
   }
 
-  use("vim-airline/vim-airline")
+  --vim-airline
+  use("windwp/windline.nvim")
+  -- use("vim-airline/vim-airline")
   --use("https://github.com/vim-airline/vim-airline")
+
+
   use("tpope/vim-commentary")
   use("ap/vim-css-color")
   use("akinsho/toggleterm.nvim")
