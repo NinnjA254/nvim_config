@@ -9,6 +9,7 @@ return require("packer").startup(function(use)
 	  -- or                            , branch = "0.1.x",
 	  requires = { {"nvim-lua/plenary.nvim"} }
   }
+  --colorscheme
   use({
 	  "rose-pine/neovim",
 	  as = "rose-pine",
@@ -50,6 +51,13 @@ return require("packer").startup(function(use)
 --  Plug "https://github.com/preservim/nerdtree" " NerdTree    help to convert vim-plug to packer in future 
   -- use("https://github.com/preservim/nerdtree")
   -- migrating to nvimtree
+  use {
+    "nvim-tree/nvim-tree.lua",
+    requires = {
+      "nvim-tree/nvim-web-devicons", -- optional, for file icons
+    },
+    tag = "nightly" -- optional, updated every week. (see issue #1193)
+  }
 
   use("https://github.com/vim-airline/vim-airline")
   use("https://github.com/tpope/vim-commentary")
@@ -58,13 +66,6 @@ return require("packer").startup(function(use)
   use {
     "windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
-  }
-  use {
-    "nvim-tree/nvim-tree.lua",
-    requires = {
-      "nvim-tree/nvim-web-devicons", -- optional, for file icons
-    },
-    tag = "nightly" -- optional, updated every week. (see issue #1193)
   }
 
 end)
