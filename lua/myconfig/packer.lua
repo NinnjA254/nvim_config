@@ -13,9 +13,9 @@ return require("packer").startup(function(use)
   -- Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Retro Scheme
   use({
 	  "rafi/awesome-vim-colorschemes",
-	  config = function()
-		  vim.cmd("colorscheme jellybeans")
-	  end
+	  -- config = function()
+		  -- vim.cmd("colorscheme jellybeans")
+	  -- end
 
   })
   -- use({
