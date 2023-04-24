@@ -11,15 +11,21 @@ return require("packer").startup(function(use)
   }
   --colorscheme
   -- Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Retro Scheme
-  use("https://github.com/rafi/awesome-vim-colorschemes")
   use({
-	  "rose-pine/neovim",
-	  as = "rose-pine",
+	  "rafi/awesome-vim-colorschemes",
 	  config = function()
-		  require("rose-pine").setup()
-		  vim.cmd("colorscheme rose-pine")
+		  vim.cmd("colorscheme jellybeans")
 	  end
+
   })
+  -- use({
+	  -- "rose-pine/neovim",
+	  -- as = "rose-pine",
+	  -- config = function()
+		  -- require("rose-pine").setup()
+		  -- vim.cmd("colorscheme rose-pine")
+	  -- end
+  -- })
 
 --  Plug "nvim-treesitter/nvim-treesitter", {"do": ":TSUpdate"}
   use("nvim-treesitter/nvim-treesitter", {run = ":TSUpdate"})
@@ -61,9 +67,10 @@ return require("packer").startup(function(use)
     tag = "nightly" -- optional, updated every week. (see issue #1193)
   }
 
-  use("https://github.com/vim-airline/vim-airline")
-  use("https://github.com/tpope/vim-commentary")
-  use("https://github.com/ap/vim-css-color")
+  use("vim-airline/vim-airline")
+  --use("https://github.com/vim-airline/vim-airline")
+  use("tpope/vim-commentary")
+  use("ap/vim-css-color")
   use("akinsho/toggleterm.nvim")
   use {
     "windwp/nvim-autopairs",
