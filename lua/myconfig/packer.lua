@@ -72,6 +72,12 @@ return require("packer").startup(function(use)
   -- use("vim-airline/vim-airline")
   --use("https://github.com/vim-airline/vim-airline")
 
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup()
+    end
+  }
 
   use("tpope/vim-commentary")
   use("ap/vim-css-color")
