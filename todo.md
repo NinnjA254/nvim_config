@@ -1,7 +1,7 @@
-configure gitsigns
+* configure gitsigns
 
-some icons do not show, figure out why. (nerdfonts??)
+* some icons do not show, figure out why. (nerdfonts??)
 
-fix windows compatibility (possibly contribute to neovim to improve its windows compatibility)
+* fix windows compatibility issues (possibly contribute to neovim to improve its windows compatibility)
 
-learn the windline api and how to make a custom airline, then make some cool airlines
+* learn the windline api and how to make a custom airline, then make some cool airlines
