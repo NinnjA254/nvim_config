@@ -1,4 +1,8 @@
+* configure bufferline
+
 * configure gitsigns
+
+* copy some configs from https://github.com/freddyvelarde/dotfiles/blob/master/.config/nvim
 
 * telescope don't work on windows (😓)
 

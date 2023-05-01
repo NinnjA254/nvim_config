@@ -4,6 +4,7 @@ return require("packer").startup(function(use)
   -- Packer can manage itself
   use "wbthomason/packer.nvim"
 
+  --fuzzy finder
   use {
 	  "nvim-telescope/telescope.nvim", tag = "0.1.1",
 	  -- or                            , branch = "0.1.x",
@@ -56,10 +57,7 @@ return require("packer").startup(function(use)
     }
   }
 
--- nerdtree
---  Plug "https://github.com/preservim/nerdtree" " NerdTree    help to convert vim-plug to packer in future 
-  -- use("https://github.com/preservim/nerdtree")
-  -- migrating to nvimtree
+  --file explorer
   use {
     "nvim-tree/nvim-tree.lua",
     requires = {
@@ -68,11 +66,14 @@ return require("packer").startup(function(use)
     tag = "nightly" -- optional, updated every week. (see issue #1193)
   }
 
-  --vim-airline
+  --airline
   use("windwp/windline.nvim")
   -- use("vim-airline/vim-airline")
-  --use("https://github.com/vim-airline/vim-airline")
 
+  -- bufferline
+  use({ "akinsho/bufferline.nvim", tag = "*", requires = "nvim-tree/nvim-web-devicons" })
+
+  --git integration
   use {
     'lewis6991/gitsigns.nvim',
     config = function()
