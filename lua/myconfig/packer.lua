@@ -81,9 +81,15 @@ return require("packer").startup(function(use)
     end
   }
 
+  --indentation guides
+  use "lukas-reineke/indent-blankline.nvim"
+
   use("tpope/vim-commentary")
+
   use("ap/vim-css-color")
+
   use("akinsho/toggleterm.nvim")
+
   use {
     "windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
