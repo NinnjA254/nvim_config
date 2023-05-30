@@ -11,7 +11,7 @@ bufferline.setup({
 		fill = {},
 		background = {},
 		tab_selected = {},
-		buffer_selected = { italic = false },
+		buffer_selected = { italic = false, },
 		diagnostic_selected = { italic = false },
 		hint_selected = { italic = false },
 		pick_selected = { italic = false },
@@ -20,6 +20,14 @@ bufferline.setup({
 	},
 
 	options = {
+		offsets = {
+			{
+				filetype = "NvimTree",
+				text = "File Explorer",
+				text_align = "left",
+				separator = true
+			}
+		},
 		indicator = {
 			icon = "▎",
 			style = "icon",
