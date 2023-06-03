@@ -15,3 +15,5 @@
 * learn the windline api and how to make a custom airline, then make some cool airlines
 
 * I just discovered wez term, it is configurable, configure it
+
+* look into whichkey
