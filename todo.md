@@ -17,3 +17,7 @@
 * I just discovered wez term, it is configurable, configure it
 
 * look into whichkey
+
+* properly understand treesitter and what it can do
+
+* understand and configure vim.diagnostic 
