@@ -1,75 +1,105 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  {
-	"neovim/nvim-lspconfig",
-  },
-  --fuzzy finder
-  {
-	  "nvim-telescope/telescope.nvim", branch = "0.1.x",
-	  dependencies = { "nvim-lua/plenary.nvim" }
-  },
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = {
+			-- Automatically install LSPs to stdpath for neovim
+			{ 'williamboman/mason.nvim', config = true },
+			'williamboman/mason-lspconfig.nvim',
 
-  --colorscheme
-  "rafi/awesome-vim-colorschemes",
+			-- Useful status updates for LSP
+			-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
+			{ 'j-hui/fidget.nvim',       opts = {} },
 
-  --treesitter
-  {
-	  "nvim-treesitter/nvim-treesitter",
-	  dependencies = {
-		  "nvim-treesitter/nvim-treesitter-textobjects",
-	  },
-	  build = ":TSUpdate",
-  },
-  "nvim-treesitter/playground",
+			-- Additional lua configuration, makes nvim stuff amazing!
+			'folke/neodev.nvim',
+		},
 
-  --file explorer
-  {
-    "nvim-tree/nvim-tree.lua",
-    dependencies = {
-      "nvim-tree/nvim-web-devicons", -- optional, for file icons
-    },
-    version = "nightly" -- optional, updated every week. (see issue #1193)
-  },
+	},
+	{
+		-- Autocompletion
+		'hrsh7th/nvim-cmp',
+		dependencies = {
+			-- Snippet Engine & its associated nvim-cmp source
+			'L3MON4D3/LuaSnip',
+			'saadparwaiz1/cmp_luasnip',
 
-  --airline
-  "windwp/windline.nvim",
+			-- Adds LSP completion capabilities
+			'hrsh7th/cmp-nvim-lsp',
 
-  -- bufferline
-  { "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
+			-- Adds a number of user-friendly snippets
+			'rafamadriz/friendly-snippets',
+		},
+	},
 
-  --git integration
-  {
-    'lewis6991/gitsigns.nvim',
-    config = function()
-      require('gitsigns').setup()
-    end
-  },
+	--fuzzy finder
+	{
+		"nvim-telescope/telescope.nvim",
+		branch = "0.1.x",
+		dependencies = { "nvim-lua/plenary.nvim" }
+	},
 
-  --indentation guides
-  "lukas-reineke/indent-blankline.nvim",
+	--colorscheme
+	"rafi/awesome-vim-colorschemes",
 
-  --gcc to comment
-  "tpope/vim-commentary",
+	--treesitter
+	{
+		"nvim-treesitter/nvim-treesitter",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter-textobjects",
+		},
+		build = ":TSUpdate",
+	},
+	"nvim-treesitter/playground",
 
-  -- highlight RGB and other color formats #FFFFFF
-  "ap/vim-css-color",
+	--file explorer
+	{
+		"nvim-tree/nvim-tree.lua",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons", -- optional, for file icons
+		},
+		version = "nightly" -- optional, updated every week. (see issue #1193)
+	},
 
-  "akinsho/toggleterm.nvim",
+	--airline
+	"windwp/windline.nvim",
 
-  {
-    "windwp/nvim-autopairs",
-    config = function() require("nvim-autopairs").setup {} end
-  },
+	-- bufferline
+	{ "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
+
+	--git integration
+	{
+		'lewis6991/gitsigns.nvim',
+		config = function()
+			require('gitsigns').setup()
+		end
+	},
+
+	--indentation guides
+	"lukas-reineke/indent-blankline.nvim",
+
+	--gcc to comment
+	"tpope/vim-commentary",
+
+	-- highlight RGB and other color formats #FFFFFF
+	"ap/vim-css-color",
+
+	"akinsho/toggleterm.nvim",
+
+	{
+		"windwp/nvim-autopairs",
+		config = function() require("nvim-autopairs").setup {} end
+	},
 })
