@@ -9,4 +9,3 @@ a.forEach((el, idx, arr) => {
 })
 
 console.log("sdsdsds")
-
