@@ -55,14 +55,14 @@ require("lazy").setup({
 	"rafi/awesome-vim-colorschemes",
 
 	--treesitter
-	{
-		"nvim-treesitter/nvim-treesitter",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter-textobjects",
-		},
-		build = ":TSUpdate",
-	},
-	"nvim-treesitter/playground",
+	 {
+	 	"nvim-treesitter/nvim-treesitter",
+	 	dependencies = {
+	 		"nvim-treesitter/nvim-treesitter-textobjects",
+	 	},
+	 	build = ":TSUpdate",
+	 },
+	 "nvim-treesitter/playground",
 
 	--file explorer
 	{
