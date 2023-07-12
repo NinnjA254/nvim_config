@@ -1,3 +1,5 @@
+* ## Discard the extra settings I have added on windows and continue from the latest commit
+
 * configure bufferline
 
 * configure gitsigns
