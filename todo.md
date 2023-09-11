@@ -1,5 +1,7 @@
 * ## Discard the extra settings I have added on windows and continue from the latest commit
 
+* try biome lsp(is it an lsp?)
+  
 * configure bufferline
 
 * configure gitsigns
