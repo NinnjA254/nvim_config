@@ -1,5 +1,7 @@
 * ## Discard the extra settings I have added on windows and continue from the latest commit
 
+* add and learn about live_grep args (tomorrow - 15 september 2023)
+
 * try biome lsp(is it an lsp?)
   
 * configure bufferline
