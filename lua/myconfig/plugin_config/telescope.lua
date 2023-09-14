@@ -4,7 +4,7 @@ require('telescope').setup{
 		--there has to be a better way of doing this. 
 		--since ripgrep is installed, it ought to ignore 
 		--them shits by default but this does not work on windows. What gives?
-			{"node_modules"} 
+			-- {"node_modules"} 
 		}
 	}
 }
