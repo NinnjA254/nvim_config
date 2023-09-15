@@ -1,4 +1,4 @@
-* ## Discard the extra settings I have added on windows and continue from the latest commit
+* look into globbing syntax: https://git-scm.com/docs/gitignore#_pattern_format
 
 * add and learn about live_grep args (tomorrow - 15 september 2023)
 
@@ -29,4 +29,3 @@
 * investigate  desc argument in vim.keymap.set() my suspicion is that this desc may be used by whichkey
 
 * understand nvim-cmp and it's dependencies
-
