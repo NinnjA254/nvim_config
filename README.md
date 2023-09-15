@@ -1,5 +1,5 @@
 # nvim-config
-neovim config, migrating to lua
+neovim config
 
 ## Be: Blazingly Fast!!!
 

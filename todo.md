@@ -1,6 +1,6 @@
 * look into globbing syntax: https://git-scm.com/docs/gitignore#_pattern_format
 
-* add and learn about live_grep args (tomorrow - 15 september 2023)
+* add and learn about live_grep args
 
 * try biome lsp(is it an lsp?)
   
