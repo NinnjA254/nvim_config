@@ -24,14 +24,8 @@ local on_attach = function(_, bufnr)
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
   nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
-  nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
+  nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition') --terrible keybinding?
 
-
-  vim.api.nvim_create_autocmd({"BufWritePost"}, {
-    callback = function()
-      print("I be savin frrrr")
-    end,
-  })
   -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
