@@ -16,7 +16,10 @@ require("lazy").setup({
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			-- Automatically install LSPs to stdpath for neovim
-			{ 'williamboman/mason.nvim', config = true },
+			{ 
+				'williamboman/mason.nvim',
+				config = true,
+			},
 			'williamboman/mason-lspconfig.nvim',
 
 			-- Useful status updates for LSP
@@ -55,6 +58,7 @@ require("lazy").setup({
 		branch = "0.1.x",
 		dependencies = { "nvim-lua/plenary.nvim" }
 	},
+	{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 
 	--colorscheme
 	"rafi/awesome-vim-colorschemes",

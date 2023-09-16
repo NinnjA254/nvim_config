@@ -36,12 +36,18 @@ require('telescope').setup{
 	}
 }
 
+require('telescope').load_extension('fzf')
+
 --keymaps
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
--- vim.keymap.set('n', '<leader>ff', ':Telescope find_files hidden=true<CR>', {}) 
+local builtin = require('telescope.builtin') --todo: [F]ind or [F]ind for these keymaps?
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {desc = '[F]ind [F]iles'})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
-vim.keymap.set('n', '<leader>gs', builtin.grep_string, { desc = '[S]earch current [W]ord' })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = '[l]ist [B]uffers' })
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {desc = '[F]ind [H]elp tags'})
+vim.keymap.set('n', '<leader>gs', builtin.grep_string, { desc = '[G]rep [S]tring' })
+
+vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {desc = '[F]ind [S]ymbols'})
+vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[F]ind [D]iagnostics' })
+vim.keymap.set('n', '<leader>fr', builtin.lsp_references, { desc = '[F]ind [R]eferences' })
+
+vim.keymap.set('n', '<leader>color', builtin.colorscheme, { desc = 'colorshemes' })

@@ -18,18 +18,20 @@ local on_attach = function(_, bufnr)
   -- vim.keymap.set('n', 'P', vim.lsp.buf.format)
   nmap('gd', vim.lsp.buf.definition)
   nmap('gi', vim.lsp.buf.implementation)
-  nmap('<leader>dj', vim.diagnostic.goto_next)
-  nmap('<leader>dk', vim.diagnostic.goto_prev)
-  nmap('<leader>dl', "<cmd>Telescope diagnostics<CR>")
+  nmap('<leader>dj', vim.diagnostic.goto_next, 'Diagnostic next')
+  nmap('<leader>dk', vim.diagnostic.goto_prev, 'Diagnostic prev')
   nmap('<leader>r', vim.lsp.buf.rename)
-
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
-
-  nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-  nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
-
   nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
+  nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
+
+
+  vim.api.nvim_create_autocmd({"BufWritePost"}, {
+    callback = function()
+      print("I be savin frrrr")
+    end,
+  })
   -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
@@ -98,5 +100,6 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
