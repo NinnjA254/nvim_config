@@ -1,12 +1,7 @@
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
-local on_attach = function(_, bufnr)
-  -- NOTE: Remember that lua is a real programming language, and as such it is possible
-  -- to define small helper and utility functions so you don't have to repeat yourself
-  -- many times.
-  --
-  -- In this case, we create a function that lets us more easily define mappings specific
-  -- for LSP related items. It sets the mode, buffer and description for us each time.
+
+local on_attach = function(client, bufnr)
   local nmap = function(keys, func, desc)
     if desc then
       desc = 'LSP: ' .. desc
@@ -26,10 +21,21 @@ local on_attach = function(_, bufnr)
 
   nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition') --terrible keybinding?
 
+
   -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
+  -- vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  --   buffer = bufnr,
+  --   callback = function()
+  --     vim.lsp.buf.format()
+  --   end
+  -- })
+
+  if client.name == "tsserver" then --prettier seems to work without this. odd
+    client.resolved_capabilities.document_formatting = false
+  end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -94,6 +100,26 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+--null-ls
+local null_ls = require('null-ls')
+
+-- formatting sources
+local formatting = null_ls.builtins.formatting
+
+-- completion sources
+local completion = null_ls.builtins.completion
+
+-- register any number of sources simultaneously
+local sources = {
+  formatting.prettier.with({ extra_args = { "--single-quote" } }),
+  -- null_ls.builtins.diagnostics.write_good,
+  -- null_ls.builtins.code_actions.gitsigns,
+}
+
+null_ls.setup({ sources = sources })
+
+
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

@@ -49,5 +49,6 @@ vim.keymap.set('n', '<leader>gs', builtin.grep_string, { desc = '[G]rep [S]tring
 vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {desc = '[F]ind [S]ymbols'})
 vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[F]ind [D]iagnostics' })
 vim.keymap.set('n', '<leader>fr', builtin.lsp_references, { desc = '[F]ind [R]eferences' })
+vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[F]ind [K]eymaps' })
 
-vim.keymap.set('n', '<leader>color', builtin.colorscheme, { desc = 'colorshemes' })
+vim.keymap.set('n', '<leader>color', builtin.colorscheme, { desc = 'colorschemes' })

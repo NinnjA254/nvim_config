@@ -11,12 +11,13 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+
 require("lazy").setup({
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			-- Automatically install LSPs to stdpath for neovim
-			{ 
+			{
 				'williamboman/mason.nvim',
 				config = true,
 			},
@@ -32,10 +33,12 @@ require("lazy").setup({
 			},
 
 			-- Additional lua configuration, makes nvim stuff amazing!
-			'folke/neodev.nvim',
+			-- 'folke/neodev.nvim', --doesn't work? check now!
+			{ "folke/neodev.nvim", opts = {} }
 		},
 
 	},
+	{ 'jose-elias-alvarez/null-ls.nvim' }, --formatting and linting
 	{
 		-- Autocompletion
 		'hrsh7th/nvim-cmp',
@@ -60,18 +63,19 @@ require("lazy").setup({
 	},
 	{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 
-	--colorscheme
+	--colorschemes
 	"rafi/awesome-vim-colorschemes",
+	"rebelot/kanagawa.nvim",
 
 	--treesitter
-	 {
-	 	"nvim-treesitter/nvim-treesitter",
-	 	dependencies = {
-	 		"nvim-treesitter/nvim-treesitter-textobjects",
-	 	},
-	 	build = ":TSUpdate",
-	 },
-	 "nvim-treesitter/playground",
+	{
+		"nvim-treesitter/nvim-treesitter",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter-textobjects",
+		},
+		build = ":TSUpdate",
+	},
+	"nvim-treesitter/playground",
 
 	--file explorer
 	{
@@ -79,7 +83,7 @@ require("lazy").setup({
 		dependencies = {
 			"nvim-tree/nvim-web-devicons", -- optional, for file icons
 		},
-		version = "nightly" -- optional, updated every week. (see issue #1193)
+		version = "nightly"              -- optional, updated every week. (see issue #1193)
 	},
 
 	--airline
@@ -100,7 +104,14 @@ require("lazy").setup({
 	"lukas-reineke/indent-blankline.nvim",
 
 	--gcc to comment
-	"tpope/vim-commentary",
+	{
+		'numToStr/Comment.nvim',
+		opts = {
+			-- add any options here
+		},
+		lazy = false,
+	},
+
 
 	-- highlight RGB and other color formats #FFFFFF
 	"ap/vim-css-color",

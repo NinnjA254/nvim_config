@@ -1,4 +1,4 @@
-vim.opt.termguicolors = true
+vim.opt.termguicolors = true --redundant? already set in set.
 -- require("bufferline").setup({})
 local status, bufferline = pcall(require, "bufferline")
 if not status then
