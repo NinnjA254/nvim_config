@@ -83,7 +83,7 @@ require("lazy").setup({
 		dependencies = {
 			"nvim-tree/nvim-web-devicons", -- optional, for file icons
 		},
-		version = "nightly"              -- optional, updated every week. (see issue #1193)
+		version = "nightly" -- optional, updated every week. (see issue #1193)
 	},
 
 	--airline
@@ -113,11 +113,8 @@ require("lazy").setup({
 	},
 
 
-	-- highlight RGB and other color formats #FFFFFF
-	"ap/vim-css-color",
 
 	"akinsho/toggleterm.nvim",
-
 	{
 		"windwp/nvim-autopairs",
 		config = function() require("nvim-autopairs").setup {} end
