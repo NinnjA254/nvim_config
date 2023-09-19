@@ -1,7 +1,6 @@
 " this here file is to be used to quickly configure vim if
 " I'm on a foreign machine where I cannot setup my beautiful neovim
 
-
 set number
 set relativenumber
 set autoindent

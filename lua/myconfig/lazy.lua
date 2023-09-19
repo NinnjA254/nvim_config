@@ -66,7 +66,7 @@ require("lazy").setup({
 	--colorschemes
 	"rafi/awesome-vim-colorschemes",
 	"rebelot/kanagawa.nvim",
-
+	
 	--treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
