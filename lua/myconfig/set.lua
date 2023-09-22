@@ -12,6 +12,9 @@ vim.opt.relativenumber = true
 --mouse
 vim.opt.mouse = "a"
 
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+
 --search behavior
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
