@@ -1,7 +1,6 @@
 -- [[ Configure LSP ]]
---  This function gets run when an LSP connects to a particular buffer.
 
-local on_attach = function(client, bufnr)
+local on_attach = function(client, bufnr) --  This function gets run when an LSP connects to a particular buffer.
   local nmap = function(keys, func, desc)
     if desc then
       desc = 'LSP: ' .. desc
@@ -18,10 +17,7 @@ local on_attach = function(client, bufnr)
   nmap('<leader>r', vim.lsp.buf.rename)
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
   nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
-
   nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition') --terrible keybinding?
-
-
   -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
@@ -52,19 +48,23 @@ mason_lspconfig.setup_handlers {
   end,
 }
 
-
--- [[ Configure nvim-cmp ]]
--- See `:help cmp`
+-- nvim-cmp
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 require('luasnip.loaders.from_vscode').lazy_load()
 luasnip.config.setup {}
-
 cmp.setup {
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
     end,
+  },
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
+  experimental = {
+    ghost_text = true
   },
   mapping = cmp.mapping.preset.insert {
     ['<C-n>'] = cmp.mapping.select_next_item(),
@@ -78,7 +78,7 @@ cmp.setup {
     },
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        cmp.select_next_item()
+        cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
       elseif luasnip.expand_or_locally_jumpable() then
         luasnip.expand_or_jump()
       else
@@ -87,7 +87,7 @@ cmp.setup {
     end, { 'i', 's' }),
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        cmp.select_prev_item()
+        cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
       elseif luasnip.locally_jumpable(-1) then
         luasnip.jump(-1)
       else
@@ -98,28 +98,27 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'path' },
   },
 }
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  }),
+})
 
 --null-ls
 local null_ls = require('null-ls')
-
 -- formatting sources
 local formatting = null_ls.builtins.formatting
-
--- completion sources
-local completion = null_ls.builtins.completion
-
 -- register any number of sources simultaneously
 local sources = {
   formatting.prettier.with({ extra_args = { "--single-quote" } }),
-  -- null_ls.builtins.diagnostics.write_good,
-  -- null_ls.builtins.code_actions.gitsigns,
 }
-
 null_ls.setup({ sources = sources })
-
-
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

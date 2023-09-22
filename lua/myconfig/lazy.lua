@@ -11,7 +11,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-
 require("lazy").setup({
 	{
 		"neovim/nvim-lspconfig",
@@ -38,7 +37,6 @@ require("lazy").setup({
 		},
 
 	},
-	{ 'jose-elias-alvarez/null-ls.nvim' }, --formatting and linting
 	{
 		-- Autocompletion
 		'hrsh7th/nvim-cmp',
@@ -51,9 +49,13 @@ require("lazy").setup({
 			'hrsh7th/cmp-nvim-lsp',
 
 			-- Adds a number of user-friendly snippets
-			'rafamadriz/friendly-snippets',
+			'rafamadriz/friendly-snippets', -- is this really a dependency? what do dependencies mean in lazy?
+
+			'hrsh7th/cmp-cmdline', --command line completion
+			'hrsh7th/cmp-path' --filename completion
 		},
 	},
+	{ 'jose-elias-alvarez/null-ls.nvim' }, --formatting and linting
 
 	--fuzzy finder
 	{
@@ -66,7 +68,7 @@ require("lazy").setup({
 	--colorschemes
 	"rafi/awesome-vim-colorschemes",
 	"rebelot/kanagawa.nvim",
-	
+
 	--treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -111,8 +113,6 @@ require("lazy").setup({
 		},
 		lazy = false,
 	},
-
-
 
 	"akinsho/toggleterm.nvim",
 	{

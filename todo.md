@@ -14,4 +14,4 @@
 
 * understand and configure vim.diagnostic 
 
-* understand nvim-cmp and it's dependencies
+* understand nvim-cmp and it's dependencies(currently doing this fr fr no cap)
