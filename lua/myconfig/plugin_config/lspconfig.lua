@@ -13,6 +13,7 @@ local on_attach = function(client, bufnr) --  This function gets run when an LSP
   nmap('gd', vim.lsp.buf.definition)
   nmap('gi', vim.lsp.buf.implementation)
   nmap('<leader>dj', vim.diagnostic.goto_next, 'Diagnostic next')
+  nmap('<leader>df', vim.diagnostic.open_float, 'Diagnostic Float')
   nmap('<leader>dk', vim.diagnostic.goto_prev, 'Diagnostic prev')
   nmap('<leader>r', vim.lsp.buf.rename)
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
@@ -49,6 +50,60 @@ mason_lspconfig.setup_handlers {
 }
 
 -- nvim-cmp
+local kind_icons = { --code icons from nvim-cmp docs. They seem kinda cool
+  Text = "  ",
+  Method = "󰆧  ",
+  Function = "󰊕  ",
+  Constructor = "  ",
+  Field = "󰇽  ",
+  Variable = "󰂡  ",
+  Class = "󰠱  ",
+  Interface = "  ",
+  Module = "  ",
+  Property = "󰜢  ",
+  Unit = "  ",
+  Value = "󰎠  ",
+  Enum = "  ",
+  Keyword = "󰌋  ",
+  Snippet = "  ",
+  Color = "󰏘  ",
+  File = "󰈙  ",
+  Reference = "  ",
+  Folder = "󰉋  ",
+  EnumMember = "  ",
+  Constant = "󰏿  ",
+  Struct = "  ",
+  Event = "  ",
+  Operator = "󰆕  ",
+  TypeParameter = "󰅲  ",
+}
+local codicons = { --vs code completion icons, requires codicons.ttf(font with the vs code codicons)?
+  Text = '',
+  Method = '',
+  Function = '',
+  Constructor = '',
+  Field = '',
+  Variable = '',
+  Class = '',
+  Interface = '',
+  Module = '',
+  Property = '',
+  Unit = '',
+  Value = '',
+  Enum = '',
+  Keyword = '',
+  Snippet = '',
+  Color = '',
+  File = '',
+  Reference = '',
+  Folder = '',
+  EnumMember = '',
+  Constant = '',
+  Struct = '',
+  Event = '',
+  Operator = '',
+  TypeParameter = '',
+}
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 require('luasnip.loaders.from_vscode').lazy_load()
@@ -65,6 +120,23 @@ cmp.setup {
   },
   experimental = {
     ghost_text = true
+  },
+  formatting = {
+    fields = { "abbr", "kind", "menu" }, --change the order of these to change their order in the completion UI
+    format = function(entry, vim_item)
+      -- Kind icons
+      vim_item.kind = string.format('%s %s  ', vim_item.kind, codicons[vim_item.kind]) -- This concatenates the icons with the name of the item kind
+      -- Source
+      vim_item.menu = ({
+        buffer = "(Buffer)",
+        nvim_lsp = "(LSP)",
+        luasnip = "(LuaSnip)",
+        nvim_lua = "(Lua)",
+        latex_symbols = "(LaTeX)",
+        Snippet = '(snip)',
+      })[entry.source.name]
+      return vim_item
+    end
   },
   mapping = cmp.mapping.preset.insert {
     ['<C-n>'] = cmp.mapping.select_next_item(),
@@ -103,6 +175,9 @@ cmp.setup {
 }
 cmp.setup.cmdline(':', {
   mapping = cmp.mapping.preset.cmdline(),
+  view = {
+    entries = { name = "wildmenu", separator = '|' }
+  },
   sources = cmp.config.sources({
     { name = 'path' }
   }, {

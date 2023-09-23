@@ -52,7 +52,7 @@ require("lazy").setup({
 			'rafamadriz/friendly-snippets', -- is this really a dependency? what do dependencies mean in lazy?
 
 			'hrsh7th/cmp-cmdline', --command line completion
-			'hrsh7th/cmp-path' --filename completion
+			'hrsh7th/cmp-path', --filename completion
 		},
 	},
 	{ 'jose-elias-alvarez/null-ls.nvim' }, --formatting and linting
