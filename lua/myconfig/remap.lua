@@ -19,10 +19,3 @@ vim.keymap.set("n", "<leader>h", "<C-w>h")
 vim.keymap.set("n", "<leader>j", "<C-w>j")
 vim.keymap.set("n", "<leader>k", "<C-w>k")
 vim.keymap.set("n", "<leader>l", "<C-w>l")
-
---telescope
-
--- Nvim-Tree
-vim.keymap.set('n', '<C-b>', ':NvimTreeToggle<CR>')
-vim.keymap.set('n', '<C-f>', ':NvimTreeFocus<CR>')
--- vim.keymap.set('n', '(i dont have a key yet)', ':NvimTreeRefresh<CR>')
