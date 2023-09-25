@@ -1,3 +1,5 @@
+* should I gitignore lazy-lock.json? updating plugins in linux and windows changes it twice...
+
 * combine codicons with kind_icons to make one set of preferred completion icons
 
 * understand and configure vim.diagnostic 
