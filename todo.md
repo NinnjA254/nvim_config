@@ -10,16 +10,15 @@
   
 * configure gitsigns
 
-* this snippet that checks if a plugin is installed befor configuring it: 
+* this snippet that checks if a plugin is installed before configuring it: 
+    ```
     local status, bufferline = pcall(require, "bufferline")
     if not status then
         print("ERROR bufferline")
         return
     end
-
-    Perhaps add it to all plugins?
-
-* copy some configs from https://github.com/freddyvelarde/dotfiles/blob/master/.config/nvim
+    ```
+    Perhaps add it to all plugin configs?
 
 * some icons do not show, figure out why. (nerdfonts??)
 
