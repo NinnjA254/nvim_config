@@ -2,7 +2,9 @@
 
 * combine codicons with kind_icons to make one set of preferred completion icons
 
-* understand and configure vim.diagnostic 
+* understand and configure vim.diagnostic
+
+* Investigate lsp things such as go to definition and add cool, blazingly fast keymaps for them
 
 * configure the telescope UI to appear more based and redpilled.(preview window on the side sometimes makes matched stuff overflow and be hidden. eg. diagnostics and any other really long matches)
 
