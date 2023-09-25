@@ -13,7 +13,7 @@ local on_attach = function(client, bufnr) --  This function gets run when an LSP
   nmap('gd', vim.lsp.buf.definition)
   nmap('gi', vim.lsp.buf.implementation)
   nmap('<leader>dj', vim.diagnostic.goto_next, 'Diagnostic next')
-  nmap('<leader>df', vim.diagnostic.open_float, 'Diagnostic Float')
+  nmap('<leader>df', vim.diagnostic.open_float, '[D]iagnostic [F]loat')
   nmap('<leader>dk', vim.diagnostic.goto_prev, 'Diagnostic prev')
   nmap('<leader>r', vim.lsp.buf.rename)
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
@@ -49,60 +49,86 @@ mason_lspconfig.setup_handlers {
   end,
 }
 
+--rough diagnostics config
+vim.diagnostic.config({
+  virtual_text = {
+    source = true,
+    format = function (diagnostic)
+      if diagnostic.severity == vim.diagnostic.severity.ERROR then
+        return "E"
+      end
+      if diagnostic.severity == vim.diagnostic.severity.WARN then
+        return "W"
+      end
+      if diagnostic.severity == vim.diagnostic.severity.INFO then
+        return "INFO"
+      end
+      if diagnostic.severity == vim.diagnostic.severity.HINT then
+        return "HINT"
+      end
+    end
+  },
+  float = {
+    severity_sort = true,
+    header = "deez diagnostics",
+    wrap = true,
+  }
+})
+
 -- nvim-cmp
 local kind_icons = { --code icons from nvim-cmp docs. They seem kinda cool
-  Text = "  ",
-  Method = "󰆧  ",
-  Function = "󰊕  ",
-  Constructor = "  ",
-  Field = "󰇽  ",
-  Variable = "󰂡  ",
-  Class = "󰠱  ",
-  Interface = "  ",
-  Module = "  ",
-  Property = "󰜢  ",
-  Unit = "  ",
-  Value = "󰎠  ",
-  Enum = "  ",
-  Keyword = "󰌋  ",
-  Snippet = "  ",
-  Color = "󰏘  ",
-  File = "󰈙  ",
-  Reference = "  ",
-  Folder = "󰉋  ",
-  EnumMember = "  ",
-  Constant = "󰏿  ",
-  Struct = "  ",
-  Event = "  ",
-  Operator = "󰆕  ",
-  TypeParameter = "󰅲  ",
+Text = "  ",
+Method = "󰆧  ",
+Function = "󰊕  ",
+Constructor = "  ",
+Field = "󰇽  ",
+Variable = "󰂡  ",
+Class = "󰠱  ",
+Interface = "  ",
+Module = "  ",
+Property = "󰜢  ",
+Unit = "  ",
+Value = "󰎠  ",
+Enum = "  ",
+Keyword = "󰌋  ",
+Snippet = "  ",
+Color = "󰏘  ",
+File = "󰈙  ",
+Reference = "  ",
+Folder = "󰉋  ",
+EnumMember = "  ",
+Constant = "󰏿  ",
+Struct = "  ",
+Event = "  ",
+Operator = "󰆕  ",
+TypeParameter = "󰅲  ",
 }
 local codicons = { --vs code completion icons, requires codicons.ttf(font with the vs code codicons)?
-  Text = '',
-  Method = '',
-  Function = '',
-  Constructor = '',
-  Field = '',
-  Variable = '',
-  Class = '',
-  Interface = '',
-  Module = '',
-  Property = '',
-  Unit = '',
-  Value = '',
-  Enum = '',
-  Keyword = '',
-  Snippet = '',
-  Color = '',
-  File = '',
-  Reference = '',
-  Folder = '',
-  EnumMember = '',
-  Constant = '',
-  Struct = '',
-  Event = '',
-  Operator = '',
-  TypeParameter = '',
+Text = '',
+Method = '',
+Function = '',
+Constructor = '',
+Field = '',
+Variable = '',
+Class = '',
+Interface = '',
+Module = '',
+Property = '',
+Unit = '',
+Value = '',
+Enum = '',
+Keyword = '',
+Snippet = '',
+Color = '',
+File = '',
+Reference = '',
+Folder = '',
+EnumMember = '',
+Constant = '',
+Struct = '',
+Event = '',
+Operator = '',
+TypeParameter = '',
 }
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'

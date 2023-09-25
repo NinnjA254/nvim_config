@@ -51,8 +51,8 @@ require("lazy").setup({
 			-- Adds a number of user-friendly snippets
 			'rafamadriz/friendly-snippets', -- is this really a dependency? what do dependencies mean in lazy?
 
-			'hrsh7th/cmp-cmdline', --command line completion
-			'hrsh7th/cmp-path', --filename completion
+			'hrsh7th/cmp-cmdline',       --command line completion
+			'hrsh7th/cmp-path',          --filename completion
 		},
 	},
 	{ 'jose-elias-alvarez/null-ls.nvim' }, --formatting and linting
@@ -85,7 +85,7 @@ require("lazy").setup({
 		dependencies = {
 			"nvim-tree/nvim-web-devicons", -- optional, for file icons
 		},
-		version = "nightly" -- optional, updated every week. (see issue #1193)
+		version = "nightly"           -- optional, updated every week. (see issue #1193)
 	},
 
 	--airline
