@@ -68,6 +68,15 @@ require("lazy").setup({
 	--colorschemes
 	"rafi/awesome-vim-colorschemes",
 	"rebelot/kanagawa.nvim",
+	"nyoom-engineering/oxocarbon.nvim",
+
+	-- css colors
+	{
+		'brenoprata10/nvim-highlight-colors',
+		config = function()
+			require('nvim-highlight-colors').setup {}
+		end
+	},
 
 	--treesitter
 	{
