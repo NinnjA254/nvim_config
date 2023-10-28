@@ -1,4 +1,5 @@
 require("nvim-tree").setup({
+	sync_root_with_cwd = true,
 	view = {
 		number = true,
 		relativenumber = true,
