@@ -2,8 +2,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 --disable netrw at the start. strongly advised by vimtree (from the primeagen)
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+--vim.g.loaded_netrw = 1
+--vim.g.loaded_netrwPlugin = 1
 
 --line numbering
 vim.opt.nu = true
