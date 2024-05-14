@@ -11,7 +11,13 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup('myconfig.plugins')
+require("lazy").setup('myconfig.plugins', {
+    change_detection = {
+	-- automatically check for config file changes and reload the ui
+	enabled = true,
+	notify = false, -- get a notification when changes are found
+    },
+})
 -- require("lazy").setup({
 -- 	{
 -- 		"neovim/nvim-lspconfig",
@@ -66,10 +72,6 @@ require("lazy").setup('myconfig.plugins')
 -- 	},
 -- 	{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 --
--- 	--colorschemes
--- 	"rafi/awesome-vim-colorschemes",
--- 	"rebelot/kanagawa.nvim",
--- 	"nyoom-engineering/oxocarbon.nvim",
 --
 -- 	-- css colors
 -- 	{

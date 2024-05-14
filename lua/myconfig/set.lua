@@ -24,6 +24,8 @@ vim.opt.softtabstop = 0
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
+
+
 vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
@@ -33,4 +35,3 @@ vim.opt.updatetime = 50
 vim.o.completeopt = 'menuone,noselect'
 
 vim.wo.signcolumn = 'yes'
-vim.cmd("highlight signcolumn guibg=none")
