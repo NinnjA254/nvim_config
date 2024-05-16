@@ -21,3 +21,4 @@
 * properly understand treesitter and what it can do
 
 * do a super super deepdive into statusline and how to set it.
+    try to write roll my own statusline config
