@@ -14,18 +14,10 @@
   
 * configure gitsigns
 
-* this snippet that checks if a plugin is installed before configuring it: 
-    ```
-    local status, bufferline = pcall(require, "bufferline")
-    if not status then
-        print("ERROR bufferline")
-        return
-    end
-    ```
-    Perhaps add it to all plugin configs?
-
 * some icons do not show, figure out why. (nerdfonts??)
 
 * learn the windline api and how to make a custom airline, then make some cool airlines
 
 * properly understand treesitter and what it can do
+
+* do a super super deepdive into statusline and how to set it.

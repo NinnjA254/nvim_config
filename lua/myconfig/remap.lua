@@ -25,3 +25,8 @@ vim.keymap.set("n", "<M-h>", "<C-W>5<")
 vim.keymap.set("n", "<M-k>", "<C-w>+")
 vim.keymap.set("n", "<M-j>", "<C-w>-")
 vim.keymap.set("n", "<M-=>", "<C-w>=")
+
+--make jumping to normal mode work normally in terminal buffers
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>') --strange behavior: 👇
+-- mapping <C-;> doesn't work at all, but mapping <Esc> or <C-[> causes <Esc>, <C-[>
+-- and <C-;> to all work. not really a problem, just strange

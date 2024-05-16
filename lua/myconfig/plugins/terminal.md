@@ -1,4 +1,3 @@
-
 # Interesting stuff to explore
 Status Variables				*terminal-status*
 
@@ -12,4 +11,3 @@ Status Variables				*terminal-status*
     The Terminal debugging plugin can be used to debug a program with gdb and view
     the source code in a Vim window.  Since this is completely contained inside
     Vim this also works remotely over an ssh connection.
-

@@ -32,7 +32,6 @@ return {
 	},
 	lazy = false,
     },
-    "windwp/nvim-autopairs",
 }
 -- require("lazy").setup({
 -- 	{
