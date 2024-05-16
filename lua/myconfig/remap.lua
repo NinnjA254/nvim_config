@@ -9,7 +9,6 @@ vim.keymap.set("x", "<leader>p", "\"_dP") --"x" means only in visual mode and no
 
 -- delete to void buffer, thus maintaining whatever was in copy buffer
 vim.keymap.set({"n","v"}, "<leader>d", "\"_d")
--- vim.keymap.set("v", "<leader>d", "\"_d")
 
 -- make a file executable with simple command.
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
@@ -19,3 +18,10 @@ vim.keymap.set("n", "<leader>h", "<C-w>h")
 vim.keymap.set("n", "<leader>j", "<C-w>j")
 vim.keymap.set("n", "<leader>k", "<C-w>k")
 vim.keymap.set("n", "<leader>l", "<C-w>l")
+
+--window resizing 
+vim.keymap.set("n", "<M-l>", "<C-W>5>")
+vim.keymap.set("n", "<M-h>", "<C-W>5<")
+vim.keymap.set("n", "<M-k>", "<C-w>+")
+vim.keymap.set("n", "<M-j>", "<C-w>-")
+vim.keymap.set("n", "<M-=>", "<C-w>=")
