@@ -9,4 +9,4 @@ require("myconfig.appearance") --put this at the top because other config files 
 -- require("myconfig.plugin_config.gitsigns")
 -- require("myconfig.plugin_config.bufferline")
 -- require("myconfig.plugin_config.lspconfig")
--- require("myconfig.plugin_config.telescope")
+require("myconfig.plugin_config.telescope")

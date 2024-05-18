@@ -24,6 +24,14 @@ return {
 	    -- vim.keymap.set('n', '(i dont have a key yet)', ':NvimTreeRefresh<CR>')
 	end
     },
+
+    --fuzzy finder
+    {
+	"nvim-telescope/telescope.nvim",
+	branch = "0.1.x",
+	dependencies = { "nvim-lua/plenary.nvim" }
+    },
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     --gcc to comment
     {
 	'numToStr/Comment.nvim',
@@ -79,13 +87,6 @@ return {
 -- 	},
 -- 	{ 'jose-elias-alvarez/null-ls.nvim' }, --formatting and linting
 --
--- 	--fuzzy finder
--- 	{
--- 		"nvim-telescope/telescope.nvim",
--- 		branch = "0.1.x",
--- 		dependencies = { "nvim-lua/plenary.nvim" }
--- 	},
--- 	{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 --
 --
 -- 	-- css colors
