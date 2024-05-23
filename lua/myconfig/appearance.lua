@@ -1,5 +1,3 @@
--- vim.cmd("colorscheme jellybeans")
-
 local customizeAppearance = function(colorscheme)
     vim.opt.fillchars = {eob = "."} --end of buffer indicator
     vim.cmd("highlight vertsplit guibg=none")

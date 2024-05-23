@@ -1,29 +1,4 @@
 return {
-    --file explorer
-    {
-	"nvim-tree/nvim-tree.lua",
-	dependencies = {
-	    "nvim-tree/nvim-web-devicons", -- optional, for file icons
-	},
-	version = "nightly",           -- optional, updated every week. (see issue #1193)
-	config = function (_, opts)
-
-	    require("nvim-tree").setup({
-		sync_root_with_cwd = true,
-		view = {
-		    number = true,
-		    relativenumber = true,
-		    -- side = "right",
-		    side = "left",
-		    adaptive_size = true
-		},
-	    })
-	    -- keymaps
-	    vim.keymap.set('n', '<C-b>', ':NvimTreeFindFileToggle<CR>')
-	    vim.keymap.set('n', '<C-f>', ':NvimTreeFocus<CR>')
-	    -- vim.keymap.set('n', '(i dont have a key yet)', ':NvimTreeRefresh<CR>')
-	end
-    },
 
     --fuzzy finder
     {
@@ -39,6 +14,10 @@ return {
 	    -- add any options here
 	},
 	lazy = false,
+    },
+    {
+	"windwp/nvim-autopairs",
+	config = function() require("nvim-autopairs").setup {} end
     },
 }
 -- require("lazy").setup({
@@ -126,7 +105,6 @@ return {
 -- 	"lukas-reineke/indent-blankline.nvim",
 --
 --
--- 	"akinsho/toggleterm.nvim",
 -- 	{
 -- 		"windwp/nvim-autopairs",
 -- 		config = function() require("nvim-autopairs").setup {} end

@@ -18,7 +18,7 @@ return {
       auto_scroll = true,
       -- persist_mode = true,
       on_open = function() --sketchy stuff👇 may no longer work in future versions of toggleterm?
-	  vim.opt_local.statusline = "%17.(Terminal[%{b:toggle_number}]%) --->  %#termcursor#Not in your Mainframe!%#termcursornc#  "
+	  vim.opt_local.statusline = "%17.(Terminal[%{b:toggle_number}]%) --->  %#termcursor#In The Mainframe!%#termcursornc#  "
       end,
   },
   config = config,
