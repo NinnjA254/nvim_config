@@ -12,8 +12,8 @@ return {
   version = "v2.*",
   opts = {
       open_mapping = '<F9>',
-      shade_terminals = false,
       hide_numbers = false,
+      shade_terminals = false,
       autochdir = true,
       auto_scroll = true,
       -- persist_mode = true,
