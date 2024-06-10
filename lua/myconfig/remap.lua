@@ -27,8 +27,8 @@ vim.keymap.set("n", "<M-j>", "<C-w>-")
 vim.keymap.set("n", "<M-=>", "<C-w>=")
 
 -- buffer navigation
-vim.keymap.set("n", "<leader>[", ":bnext<CR>")
-vim.keymap.set("n", "<leader>]", ":bprev<CR>")
+vim.keymap.set("n", "<leader>]", ":bnext<CR>")
+vim.keymap.set("n", "<leader>[", ":bprev<CR>")
 vim.keymap.set("n", "<leader>bd", ":bd<CR>")
 
 --make jumping to normal mode work normally in terminal buffers

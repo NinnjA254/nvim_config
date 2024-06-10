@@ -1,0 +1,76 @@
+local root_files = {'package.json'}
+local paths = vim.fs.find(root_files, {stop = vim.env.HOME, upward = true })
+local root_dir = vim.fs.dirname(paths[1])
+
+if root_dir then
+    local default_config = {
+	init_options = { hostInfo = 'neovim' },
+	cmd = { 'typescript-language-server', '--stdio' },
+	filetypes = {
+	    'javascript',
+	    'javascriptreact',
+	    'javascript.jsx',
+	    'typescript',
+	    'typescriptreact',
+	    'typescript.tsx',
+	},
+	root_dir = root_dir,
+	single_file_support = true,
+    }
+    vim.lsp.start(default_config)
+    print('we outchea')
+end
+
+
+vim.keymap.set('n', 'K', vim.lsp.buf.hover)
+-- vim.keymap.set('n', 'P', vim.lsp.buf.format)
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
+vim.keymap.set('n', 'gi', vim.lsp.buf.implementation)
+vim.keymap.set('n', '<leader>dj', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<leader>df', vim.diagnostic.open_float)
+vim.keymap.set('n', '<leader>dk', vim.diagnostic.goto_prev)
+vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename)
+vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action)
+vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help)
+vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition) --terrible keybinding?
+
+--diagnostics
+vim.diagnostic.config({
+    float = {
+	border = 'rounded',
+    },
+})
+local function sign_define(args)
+  vim.fn.sign_define(args.name, {
+    texthl = args.name,
+    text = args.text,
+    numhl = ''
+  })
+end
+
+sign_define({name = 'DiagnosticSignError', text = '✘'})
+sign_define({name = 'DiagnosticSignError', text = ''})
+sign_define({name = 'DiagnosticSignWarn', text = ''})
+sign_define({name = 'DiagnosticSignHint', text = ''})
+sign_define({name = 'DiagnosticSignInfo', text = ''})
+
+--documentation window
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
+  vim.lsp.handlers.hover,
+  {border = 'rounded'}
+)
+
+--signature help
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+  vim.lsp.handlers.signature_help,
+  {border = 'rounded'}
+)
+
+
+
+
+--  (nf-fa-bomb) - Evokes a sense of critical failure.
+--  (nf-fa-rocket) - Symbol of critical failure.
+--  (nf-fa-fighter_jet) - High-impact error symbol.
+--  (nf-mdi-information_outline) - Clear information icon.
+

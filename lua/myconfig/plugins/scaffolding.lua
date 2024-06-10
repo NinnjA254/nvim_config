@@ -1,24 +1,31 @@
 return {
 
-    --fuzzy finder
-    {
-	"nvim-telescope/telescope.nvim",
-	branch = "0.1.x",
-	dependencies = { "nvim-lua/plenary.nvim" }
-    },
-    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-    --gcc to comment
-    {
-	'numToStr/Comment.nvim',
-	opts = {
-	    -- add any options here
+	--fuzzy finder
+	{
+		"nvim-telescope/telescope.nvim",
+		branch = "0.1.x",
+		dependencies = { "nvim-lua/plenary.nvim" }
 	},
-	lazy = false,
-    },
-    {
-	"windwp/nvim-autopairs",
-	config = function() require("nvim-autopairs").setup {} end
-    },
+	{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+	--gcc to comment
+	{
+		'numToStr/Comment.nvim',
+		opts = {
+			-- add any options here
+		},
+		lazy = false,
+	},
+	{
+		"windwp/nvim-autopairs",
+		config = function() require("nvim-autopairs").setup {} end
+	},
+	--git integration
+	{
+		'lewis6991/gitsigns.nvim',
+		config = function()
+			require('gitsigns').setup()
+		end
+	},
 }
 -- require("lazy").setup({
 -- 	{
@@ -87,8 +94,6 @@ return {
 -- 	"nvim-treesitter/playground",
 --
 --
--- 	--airline
--- 	"windwp/windline.nvim",
 --
 -- 	-- bufferline
 -- 	{ "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },

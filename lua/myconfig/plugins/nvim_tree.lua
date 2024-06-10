@@ -21,7 +21,7 @@ return {
     dependencies = {
 	"nvim-tree/nvim-web-devicons",
     },
-    opts = {	
+    opts = {
 	on_attach = on_attach,
 	sync_root_with_cwd = true,
 	view = {
@@ -71,7 +71,7 @@ return {
 	},
     },
     config = function(_, opts)
-	require("nvim-tree").setup(opts) 
+	require("nvim-tree").setup(opts)
 	vim.keymap.set('n', '<C-b>', ':NvimTreeFindFileToggle<CR>')
 	vim.keymap.set('n', '<C-f>', ':NvimTreeFocus<CR>')
     end,

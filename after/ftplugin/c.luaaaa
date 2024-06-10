@@ -1,0 +1,67 @@
+local root_files = {'main.c'}
+local paths = vim.fs.find(root_files, {stop = vim.env.HOME, upward = true })
+local root_dir = vim.fs.dirname(paths[1])
+
+local default_capabilities = {
+    textDocument = {
+	completion = {
+	    editsNearCursor = true,
+	},
+    },
+    offsetEncoding = { 'utf-8', 'utf-16' },
+}
+
+local default_config = {
+    cmd = { 'clangd' },
+    filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
+    root_dir = root_dir,
+    single_file_support = true,
+    capabilities = default_capabilities,
+}
+vim.lsp.start(default_config)
+print('we cin')
+
+
+vim.keymap.set('n', 'K', vim.lsp.buf.hover)
+-- vim.keymap.set('n', 'P', vim.lsp.buf.format)
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
+vim.keymap.set('n', 'gi', vim.lsp.buf.implementation)
+vim.keymap.set('n', '<leader>dj', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<leader>df', vim.diagnostic.open_float)
+vim.keymap.set('n', '<leader>dk', vim.diagnostic.goto_prev)
+vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename)
+vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action)
+vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help)
+vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition) --terrible keybinding?
+
+--diagnostics
+vim.diagnostic.config({
+    float = {
+	border = 'rounded',
+    },
+})
+local function sign_define(args)
+  vim.fn.sign_define(args.name, {
+    texthl = args.name,
+    text = args.text,
+    numhl = ''
+  })
+end
+
+sign_define({name = 'DiagnosticSignError', text = '✘'})
+sign_define({name = 'DiagnosticSignError', text = ''})
+sign_define({name = 'DiagnosticSignWarn', text = ''})
+sign_define({name = 'DiagnosticSignHint', text = ''})
+sign_define({name = 'DiagnosticSignInfo', text = ''})
+
+--documentation window
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
+  vim.lsp.handlers.hover,
+  {border = 'rounded'}
+)
+
+--signature help
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+  vim.lsp.handlers.signature_help,
+  {border = 'rounded'}
+)
