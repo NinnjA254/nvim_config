@@ -1,11 +1,11 @@
 #include <cinttypes>
 #include <stdio.h>
 void foo(void){
-    return;
+	return;
 }
 int main(void)
 {
-    int flab = 10;
-    printf("%d\n", flab);
-    return 0;
+	int flab = 10;
+	printf("%d\n", flab);
+	return 0;
 }

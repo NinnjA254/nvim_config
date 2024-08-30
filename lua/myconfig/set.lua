@@ -12,12 +12,12 @@ vim.opt.relativenumber = true
 --mouse
 vim.opt.mouse = "a"
 
--- vim.opt.tabstop = 2
--- vim.opt.shiftwidth = 2
-vim.opt.shiftwidth = 4
-vim.opt.smarttab = true
-vim.opt.tabstop = 8
-vim.opt.softtabstop = 0
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+-- vim.opt.shiftwidth = 4
+-- vim.opt.smarttab = true
+-- vim.opt.tabstop = 8
+-- vim.opt.softtabstop = 0
 
 
 --search behavior
